@@ -10,7 +10,7 @@ Fancy web application of the Men's NCAA Basketball Tournament (Links to an exter
  (Links to an external site.)Links to an external site.Willy St Co-op: Cheese Challenge (Links to an external site.)Links to an external site.
 During the tournament (and while the program is running), when a game is completed:
 
-final scores are entered for each challenger
+Final scores are entered for each challenger
 [Final Score] submit button is clicked
 winners are indicated in the tournament bracket's next round
 GUI is updated to reflect the final scores of the completed challenge and challengers for next round
