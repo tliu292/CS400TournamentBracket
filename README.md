@@ -6,8 +6,7 @@ The challengers are provided in a text only file in order of their ranking from 
 The program must then display a GUI interface with a seeded tournament bracket
 Each challenge with two challengers will have an integer input fields for each challenger and a [Final Score] submit button.
 Each challenge with challengers that are yet to be determined will have empty lines to show that challengers will be determined.
-Fancy web application of the Men's NCAA Basketball Tournament (Links to an external site.)Links to an external site.
- (Links to an external site.)Links to an external site.Willy St Co-op: Cheese Challenge (Links to an external site.)Links to an external site.
+
 During the tournament (and while the program is running), when a game is completed:
 
 Final scores are entered for each challenger
