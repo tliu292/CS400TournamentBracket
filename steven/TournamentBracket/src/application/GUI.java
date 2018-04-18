@@ -33,7 +33,8 @@ public class GUI {
 		
 		Main.left = new VBox();
 		Main.center = new HBox();
-		
+		Main.preComputationRanking();
+
 		preComputationLeft();
 		root.setLeft(Main.left);
 

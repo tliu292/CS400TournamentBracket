@@ -70,6 +70,32 @@ public class Main extends Application {
 
 	}
 
+	static void preComputationRanking() {
+		int[] left = new int[teams.size()/2];
+		int[] right = new int[teams.size()/2];
+		ArrayList<Team> ranking = new ArrayList<Team>();
+		int indexLeft = 0;
+		int indexRight = 0;
+		for (int i=0;i<teams.size();i++) {
+			if ((i%4 == 0) || (i%4 == 3)) {
+				left[indexLeft] = i;
+				indexLeft++;
+			} else {
+				right[indexRight] =i;
+				indexRight++;
+			}
+		}
+		for (int i=0;i<teams.size()/4;i++) {
+			ranking.add(teams.get(left[i]));
+			ranking.add(teams.get(left[teams.size()/2-i-1]));
+		}
+		for (int i=0;i<teams.size()/4;i++) {
+			ranking.add(teams.get(right[i]));
+			ranking.add(teams.get(right[teams.size()/2-i-1]));
+		}
+		teams = ranking;
+	}
+	
 	static void computeWinners() {
 		ArrayList<Team> winners = new ArrayList<Team>();
 		for (int i = 0; i < teams.size() / 2; i++) {
@@ -107,7 +133,6 @@ public class Main extends Application {
 
 			loadDefaultFile();
 			root = GUI.setupGUI(root);
-			
 			Scene scene = new Scene(root, 1600, 900);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			stage.setScene(scene);
