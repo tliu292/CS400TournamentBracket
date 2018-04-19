@@ -21,7 +21,8 @@ import javafx.stage.Stage;
 
 ///////////////////////////////////////////////////////////////////////////////
 //Assignment Name: TournamentBracket
-//Author: Kesong Cao (kcao22@wisc.edu)
+//Author: Jiazhi Yang (jyang436@wisc.edu)
+//        Kesong Cao (kcao22@wisc.edu)
 //Due Date: May 3, 2018
 //Other Source Credits: None
 //Known Bugs: None, to the best of my knowledge
@@ -31,13 +32,13 @@ public class GUI {
 
 	public static BorderPane setupGUI(BorderPane root) {
 		Main.gameCount = 0;
-		
+
 		Main.left = new VBox();
 		Main.center = new HBox();
 
 		preComputationLeft();
 		root.setLeft(Main.left);
-		
+
 		Main.preComputationRanking();
 
 		preComputationCenter();
@@ -139,13 +140,13 @@ public class GUI {
 	private static HBox setupOneTeam(HBox oneTeam, Team team) {
 		Label teamProperty = new Label();
 		teamProperty.setFont(new Font("Algerian", 12));
-		teamProperty.setText(team.getRank()+ "  " + team.getName());
-	
+		teamProperty.setText(team.getRank() + "  " + team.getName());
+
 		TextField score = new TextField();
 		score.setMaxWidth(50);
 		score.setFont(new Font("Algerian", 12));
 		score.setPromptText("Score");
-	
+
 		oneTeam.getChildren().add(teamProperty);
 		oneTeam.getChildren().add(score);
 		return oneTeam;
@@ -209,8 +210,8 @@ public class GUI {
 
 		return 0;
 	}
-	
+
 	private static void winningTeam() {
-		
+
 	}
 }

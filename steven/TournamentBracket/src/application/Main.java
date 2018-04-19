@@ -20,7 +20,8 @@ import javafx.scene.layout.VBox;
 
 ///////////////////////////////////////////////////////////////////////////////
 //Assignment Name: TournamentBracket
-//Author: Kesong Cao (kcao22@wisc.edu)
+//Author: Jiazhi Yang (jyang436@wisc.edu)
+//        Kesong Cao (kcao22@wisc.edu)
 //        Tz-Ruei Liu (tliu292@wisc.edu)
 //Due Date: May 3, 2018
 //Other Source Credits: None
@@ -40,8 +41,12 @@ public class Main extends Application {
 	static HBox center;
 	static BorderPane root;
 
-	private static void loadDefaultFile() {
-		readFile("src" + File.separator + "teams.txt", null);
+	private static void loadDefaultFile(String path) {
+		if (path == null) {
+			readFile("src" + File.separator + "teams.txt", null);
+		} else {
+			readFile(path, null);
+		}
 	}
 
 	static void readFile(String fileName, File file) {
@@ -83,12 +88,12 @@ public class Main extends Application {
 				left[indexLeft] = i;
 				indexLeft++;
 			} else {
-				right[indexRight] =i;
+				right[indexRight] = i;
 				indexRight++;
 			}
 		}
-		int i= 0;
-		int j= teams.size() / 4 - 1;
+		int i = 0;
+		int j = teams.size() / 4 - 1;
 		while (i < j) {
 			ranking.add(teams.get(left[i]));
 			ranking.add(teams.get(left[teams.size() / 2 - i - 1]));
@@ -97,9 +102,9 @@ public class Main extends Application {
 			i++;
 			j--;
 		}
-		i =0;
+		i = 0;
 		j = teams.size() / 4 - 1;
-		while (i<j) {
+		while (i < j) {
 			ranking.add(teams.get(right[i]));
 			ranking.add(teams.get(right[teams.size() / 2 - i - 1]));
 			ranking.add(teams.get(right[j]));
@@ -109,7 +114,7 @@ public class Main extends Application {
 		}
 		teams = ranking;
 	}
-	
+
 	static void computeWinners() {
 		ArrayList<Team> winners = new ArrayList<Team>();
 		for (int i = 0; i < teams.size() / 2; i++) {
@@ -122,7 +127,8 @@ public class Main extends Application {
 				Alert alert = new Alert(AlertType.CONFIRMATION);
 				alert.setTitle("Confirmation Dialog");
 				alert.setHeaderText("Two teams have the same score!");
-				alert.setContentText("Choose your winning team of this game between\n"+"A: Team "+teams.get(2*i).getName()+"\n and\n"+"B: Team "+teams.get(2*i+1).getName());
+				alert.setContentText("Choose your winning team of this game between\n" + "A: Team "
+						+ teams.get(2 * i).getName() + "\n and\n" + "B: Team " + teams.get(2 * i + 1).getName());
 
 				ButtonType buttonTypeOne = new ButtonType("A");
 				ButtonType buttonTypeTwo = new ButtonType("B");
@@ -130,7 +136,7 @@ public class Main extends Application {
 				alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo);
 
 				Optional<ButtonType> choice = alert.showAndWait();
-				if (choice.get() == buttonTypeOne){
+				if (choice.get() == buttonTypeOne) {
 					winners.add(teams.get(2 * i));
 				} else {
 					winners.add(teams.get(2 * i + 1));
@@ -156,7 +162,10 @@ public class Main extends Application {
 	}
 
 	public static void main(String[] args) {
-		loadDefaultFile();
+		if (args != null && args.length > 0)
+			loadDefaultFile(args[0]);
+		else
+			loadDefaultFile(null);
 		launch(args);
 	}
 }
