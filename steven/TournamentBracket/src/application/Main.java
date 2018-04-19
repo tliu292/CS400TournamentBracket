@@ -21,7 +21,7 @@ import javafx.scene.layout.VBox;
 ///////////////////////////////////////////////////////////////////////////////
 //Assignment Name: TournamentBracket
 //Author: Kesong Cao (kcao22@wisc.edu)
-//        Tz-Ruei Liu (tliu262@wisc.edu)
+//        Tz-Ruei Liu (tliu292@wisc.edu)
 //Due Date: May 3, 2018
 //Other Source Credits: None
 //Known Bugs: None, to the best of my knowledge
