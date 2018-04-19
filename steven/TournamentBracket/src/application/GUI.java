@@ -33,10 +33,11 @@ public class GUI {
 		
 		Main.left = new VBox();
 		Main.center = new HBox();
-		Main.preComputationRanking();
 
 		preComputationLeft();
 		root.setLeft(Main.left);
+		
+		Main.preComputationRanking();
 
 		preComputationCenter();
 		root.setCenter(Main.center);
@@ -197,5 +198,9 @@ public class GUI {
 			((TextField) (((HBox) (rightSide).getChildren().get(i)).getChildren().get(1))).setEditable(false);
 
 		return 0;
+	}
+	
+	private static void winningTeam() {
+		
 	}
 }

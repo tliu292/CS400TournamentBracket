@@ -85,13 +85,25 @@ public class Main extends Application {
 				indexRight++;
 			}
 		}
-		for (int i=0;i<teams.size()/4;i++) {
+		int i= 0;
+		int j= teams.size()/4-1;
+		while (i<j) {
 			ranking.add(teams.get(left[i]));
 			ranking.add(teams.get(left[teams.size()/2-i-1]));
+			ranking.add(teams.get(left[j]));
+			ranking.add(teams.get(left[teams.size()/2-j-1]));
+			i++;
+			j--;
 		}
-		for (int i=0;i<teams.size()/4;i++) {
+		i =0;
+		j = teams.size()/4-1;
+		while (i<j) {
 			ranking.add(teams.get(right[i]));
 			ranking.add(teams.get(right[teams.size()/2-i-1]));
+			ranking.add(teams.get(right[j]));
+			ranking.add(teams.get(right[teams.size()/2-j-1]));
+			i++;
+			j--;
 		}
 		teams = ranking;
 	}
