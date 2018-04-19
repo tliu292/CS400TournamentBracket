@@ -28,6 +28,8 @@ import javafx.scene.layout.VBox;
 ///////////////////////////////////////////////////////////////////////////////
 
 public class Main extends Application {
+	static final int HEIGHT = 1100;
+	static final int WIDTH = 700;
 
 	static ArrayList<Team> teams = new ArrayList<Team>();
 	static Integer gameCount;
@@ -38,8 +40,8 @@ public class Main extends Application {
 	static HBox center;
 	static BorderPane root;
 
-	private void loadDefaultFile() {
-		readFile("src" + File.separator + "team16.txt", null);
+	private static void loadDefaultFile() {
+		readFile("src" + File.separator + "teams.txt", null);
 	}
 
 	static void readFile(String fileName, File file) {
@@ -71,13 +73,13 @@ public class Main extends Application {
 	}
 
 	static void preComputationRanking() {
-		int[] left = new int[teams.size()/2];
-		int[] right = new int[teams.size()/2];
+		int[] left = new int[teams.size() / 2];
+		int[] right = new int[teams.size() / 2];
 		ArrayList<Team> ranking = new ArrayList<Team>();
 		int indexLeft = 0;
 		int indexRight = 0;
-		for (int i=0;i<teams.size();i++) {
-			if ((i%4 == 0) || (i%4 == 3)) {
+		for (int i = 0; i < teams.size(); i++) {
+			if ((i % 4 == 0) || (i % 4 == 3)) {
 				left[indexLeft] = i;
 				indexLeft++;
 			} else {
@@ -86,22 +88,22 @@ public class Main extends Application {
 			}
 		}
 		int i= 0;
-		int j= teams.size()/4-1;
-		while (i<j) {
+		int j= teams.size() / 4 - 1;
+		while (i < j) {
 			ranking.add(teams.get(left[i]));
-			ranking.add(teams.get(left[teams.size()/2-i-1]));
+			ranking.add(teams.get(left[teams.size() / 2 - i - 1]));
 			ranking.add(teams.get(left[j]));
-			ranking.add(teams.get(left[teams.size()/2-j-1]));
+			ranking.add(teams.get(left[teams.size() / 2 - j - 1]));
 			i++;
 			j--;
 		}
 		i =0;
-		j = teams.size()/4-1;
+		j = teams.size() / 4 - 1;
 		while (i<j) {
 			ranking.add(teams.get(right[i]));
-			ranking.add(teams.get(right[teams.size()/2-i-1]));
+			ranking.add(teams.get(right[teams.size() / 2 - i - 1]));
 			ranking.add(teams.get(right[j]));
-			ranking.add(teams.get(right[teams.size()/2-j-1]));
+			ranking.add(teams.get(right[teams.size() / 2 - j - 1]));
 			i++;
 			j--;
 		}
@@ -142,10 +144,8 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			root = new BorderPane();
-
-			loadDefaultFile();
 			root = GUI.setupGUI(root);
-			Scene scene = new Scene(root, 1600, 900);
+			Scene scene = new Scene(root, HEIGHT, WIDTH);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			stage.setScene(scene);
 			stage.setTitle("Tournament Bracket");
@@ -156,6 +156,7 @@ public class Main extends Application {
 	}
 
 	public static void main(String[] args) {
+		loadDefaultFile();
 		launch(args);
 	}
 }

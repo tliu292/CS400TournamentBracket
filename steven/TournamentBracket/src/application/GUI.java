@@ -14,6 +14,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
@@ -56,9 +57,14 @@ public class GUI {
 	}
 
 	private static VBox setupTeamList(VBox teamList) {
+		Label labelHead = new Label();
+		labelHead.setText("League Rank");
+		labelHead.setFont(new Font("Algerian", 15));
+		teamList.getChildren().add(labelHead);
 		for (Team team : Main.teams) {
 			Label label = new Label();
-			label.setText(team.getName());
+			label.setText(team.getRank() + "  " + team.getName());
+			label.setFont(new Font("Algerian", 13));
 			teamList.getChildren().add(label);
 		}
 		return teamList;
@@ -66,6 +72,7 @@ public class GUI {
 
 	private static Button setupLoadFile(Button loadFile) {
 		loadFile.setText("Load");
+		loadFile.setFont(new Font("Algerian", 13));
 		loadFile.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -95,8 +102,8 @@ public class GUI {
 	}
 
 	private static HBox setupPageRegular(HBox page) {
-		VBox leftSide = new VBox();
-		VBox rightSide = new VBox();
+		VBox leftSide = new VBox(30);
+		VBox rightSide = new VBox(30);
 
 		for (int i = 0; i < Main.teams.size() / 2; i++) {
 			HBox oneTeam = new HBox();
@@ -112,6 +119,7 @@ public class GUI {
 
 		Button submit = new Button();
 		submit.setText("Submit Scores");
+		submit.setFont(new Font("Algerian", 11));
 		submit.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -129,14 +137,16 @@ public class GUI {
 	}
 
 	private static HBox setupOneTeam(HBox oneTeam, Team team) {
-		Label name = new Label();
-		name.setText(team.getName());
+		Label teamProperty = new Label();
+		teamProperty.setFont(new Font("Algerian", 12));
+		teamProperty.setText(team.getRank()+ "  " + team.getName());
 	
 		TextField score = new TextField();
-		score.setMaxWidth(60);
+		score.setMaxWidth(50);
+		score.setFont(new Font("Algerian", 12));
 		score.setPromptText("Score");
 	
-		oneTeam.getChildren().add(name);
+		oneTeam.getChildren().add(teamProperty);
 		oneTeam.getChildren().add(score);
 		return oneTeam;
 	}
