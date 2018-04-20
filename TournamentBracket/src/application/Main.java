@@ -29,8 +29,8 @@ import javafx.scene.layout.VBox;
 ///////////////////////////////////////////////////////////////////////////////
 
 public class Main extends Application {
-	static final int HEIGHT = 1100;
-	static final int WIDTH = 700;
+	static final int HEIGHT = 800;
+	static final int WIDTH = 600;
 
 	static ArrayList<Team> teams = new ArrayList<Team>();
 	static Integer gameCount;
