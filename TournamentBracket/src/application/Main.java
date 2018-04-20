@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -33,6 +34,7 @@ public class Main extends Application {
 	static final int WIDTH = 700;
 
 	static ArrayList<Team> teams = new ArrayList<Team>();
+	static ArrayList<Game> games = new ArrayList<Game>();
 	static Integer gameCount;
 	static HBox currentPage;
 
@@ -113,6 +115,18 @@ public class Main extends Application {
 			j--;
 		}
 		teams = ranking;
+	}
+	
+	static void setGames() {
+		int gameIndex = 1;
+		for (int i = 0; i < teams.size() / 2; i++) {
+			games.add(new Game(teams.get(i*2), teams.get(i*2 + 1), gameIndex));
+			gameIndex++;
+		}
+		for (int i = 0; i < teams.size() / 2 - 1; i++) {
+			games.add(new Game(gameIndex));
+			gameIndex++;
+		}
 	}
 
 	static void computeWinners() {

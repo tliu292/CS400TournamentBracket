@@ -1,6 +1,7 @@
 package application;
 
 import java.io.File;
+import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -10,6 +11,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -32,7 +35,13 @@ public class GUI {
 
 	public static BorderPane setupGUI(BorderPane root) {
 		Main.gameCount = 0;
-
+		
+		Image image = new Image("march-madness-pic.png",350,350,true,true);
+		ImageView imageView = new ImageView(image);
+		BorderPane bp = new BorderPane();
+		root.setBottom(bp);
+		bp.setRight(new ImageView(image));
+				
 		Main.left = new VBox();
 		Main.center = new HBox();
 
@@ -40,6 +49,7 @@ public class GUI {
 		root.setLeft(Main.left);
 
 		Main.preComputationRanking();
+		Main.setGames();
 
 		preComputationCenter();
 		root.setCenter(Main.center);
@@ -95,79 +105,81 @@ public class GUI {
 	private static void preComputationCenter() {
 		Main.currentPage = new HBox();
 		if (Main.teams.size() > 1) {
-			Main.currentPage = setupPageRegular(Main.currentPage);
+			Main.currentPage = setupPageRegular();
 		} else {
 
 		}
 		Main.center.getChildren().add(Main.currentPage);
 	}
 
-	private static HBox setupPageRegular(HBox page) {
-		VBox leftSide = new VBox(30);
-		VBox rightSide = new VBox(30);
+	private static HBox setupPageRegular() {
+		ArrayList<VBox> vBoxList = new ArrayList<VBox>();
+		int vBoxNum = (int)(Math.log10(Main.teams.size())/Math.log10(2)) * 2 - 1;
+		int index = 0;
 
-		for (int i = 0; i < Main.teams.size() / 2; i++) {
-			HBox oneTeam = new HBox();
-			oneTeam = setupOneTeam(oneTeam, Main.teams.get(i));
-			leftSide.getChildren().add(oneTeam);
+		for (int i = 0; i <vBoxNum; i++) {
+			vBoxList.add(new VBox());
 		}
-
-		for (int i = Main.teams.size() / 2; i < Main.teams.size(); i++) {
-			HBox oneTeam = new HBox();
-			oneTeam = setupOneTeam(oneTeam, Main.teams.get(i));
-			rightSide.getChildren().add(oneTeam);
-		}
-
-		Button submit = new Button();
-		submit.setText("Submit Scores");
-		submit.setFont(new Font("Algerian", 11));
-		submit.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				progressRegular();
+		
+		vBoxList.get(vBoxNum/2).getChildren().add(Main.games.get(Main.games.size() - 1).setUpGame());
+		for (int i = 0; i < vBoxNum / 2; i++) {
+			for (int j = 0; j < (int) Math.pow(2, vBoxNum / 2 - 1 - i); j++) {
+				vBoxList.get(i).getChildren().add(Main.games.get(index).setUpGame());
+				index++;
 			}
-		});
+			for (int j = 0; j < (int) Math.pow(2, vBoxNum / 2 - 1 - i); j++) {
+				vBoxList.get(vBoxList.size() - i - 1).getChildren().add(Main.games.get(index).setUpGame());
+				index++;
+			}
+		}
 
-		HBox center = new HBox();
-		center.getChildren().add(submit);
-
-		page.getChildren().add(leftSide);
-		page.getChildren().add(center);
-		page.getChildren().add(rightSide);
+//		Button submit = new Button();
+//		submit.setText("Submit Scores");
+//		submit.setFont(new Font("Algerian", 11));
+//		submit.setOnAction(new EventHandler<ActionEvent>() {
+//			@Override
+//			public void handle(ActionEvent event) {
+//				progressRegular();
+//			}
+//		});
+		
+		HBox page = new HBox();
+		for (int i = 0; i < vBoxList.size(); i++)
+			page.getChildren().add(vBoxList.get(i));
 		return page;
 	}
 
-	private static HBox setupOneTeam(HBox oneTeam, Team team) {
-		Label teamProperty = new Label();
-		teamProperty.setFont(new Font("Algerian", 12));
-		teamProperty.setText(team.getRank() + "  " + team.getName());
+//	private static HBox setupOneTeam(HBox oneTeam, Team team) {
+//		Label teamProperty = new Label();
+//		teamProperty.setFont(new Font("Algerian", 12));
+//		teamProperty.setText(team.getRank() + "  " + team.getName());
+//
+//		TextField score = new TextField();
+//		score.setMaxWidth(50);
+//		score.setFont(new Font("Algerian", 12));
+//		score.setPromptText("Score");
+//
+//		oneTeam.getChildren().add(teamProperty);
+//		oneTeam.getChildren().add(score);
+//		return oneTeam;
+//	}
 
-		TextField score = new TextField();
-		score.setMaxWidth(50);
-		score.setFont(new Font("Algerian", 12));
-		score.setPromptText("Score");
+//	private static void progressRegular() {
+//		if (saveCurrentScores() == -1)
+//			return;
+//		Main.computeWinners();
+//		generateNewPage();
+//	}
 
-		oneTeam.getChildren().add(teamProperty);
-		oneTeam.getChildren().add(score);
-		return oneTeam;
-	}
-
-	private static void progressRegular() {
-		if (saveCurrentScores() == -1)
-			return;
-		Main.computeWinners();
-		generateNewPage();
-	}
-
-	private static void generateNewPage() {
-		HBox root = (HBox) Main.center.getChildren().get(0);
-		for (int i = 0; i < Main.gameCount; i++)
-			root = (HBox) root.getChildren().get(1);
-		Main.gameCount++;
-		Main.currentPage = new HBox();
-		Main.currentPage = setupPageRegular(Main.currentPage);
-		root.getChildren().set(1, Main.currentPage);
-	}
+//	private static void generateNewPage() {
+//		HBox root = (HBox) Main.center.getChildren().get(0);
+//		for (int i = 0; i < Main.gameCount; i++)
+//			root = (HBox) root.getChildren().get(1);
+//		Main.gameCount++;
+//		Main.currentPage = new HBox();
+//		Main.currentPage = setupPageRegular(Main.currentPage);
+//		root.getChildren().set(1, Main.currentPage);
+//	}
 
 	private static int saveCurrentScores() {
 		VBox leftSide = (VBox) Main.currentPage.getChildren().get(0);
