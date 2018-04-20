@@ -31,13 +31,10 @@ public class Game {
 		HBox team1HBox = setUpTeamHBox(team1);		
 		HBox team2HBox = setUpTeamHBox(team2);
 		VBox vBox = new VBox();
-	
 		Button submit = new Button();
 		submit.setText("Submit");
 		submit.setFont(new Font("Algerian", 11));
-		
 		vBox.getChildren().addAll(team1HBox, submit, team2HBox);
-		
 		return vBox;
 	}
 	
@@ -63,14 +60,14 @@ public class Game {
 		return hBox;
 	}
 	
-	public void addTeam1(Team team1) {
+	public VBox addTeam1(Team team1) {
 		this.team1 = team1;
-		setUpGame();
+		return setUpGame();
 	}
 	
-	public void addTeam2(Team team2) {
+	public VBox addTeam2(Team team2) {
 		this.team2 = team2;
-		setUpGame();
+		return setUpGame();
 	}
 	
 	public int getGameNumber() {
