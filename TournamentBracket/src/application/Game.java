@@ -10,6 +10,21 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
+///////////////////////////////////////////////////////////////////////////////
+//Assignment Name: TournamentBracket
+//Author: Jiazhi Yang (jyang436@wisc.edu)
+//Tz-Ruei Liu (tliu292@wisc.edu)
+//Jerry Kou (jkou3@wisc.edu)
+//Due Date: May 3, 2018
+//Other Source Credits: None
+//Known Bugs: None, to the best of my knowledge
+///////////////////////////////////////////////////////////////////////////////
+
+/**
+ * Game class stores information of each particular game
+ * each game contains a gameNumber, differentiating one game from anther
+ * and also team1 and team2 for competition
+ */
 public class Game {
 	private int gameNumber;
 	private Team team1;
@@ -27,17 +42,34 @@ public class Game {
 		this.team2 = team2;
 	}
 	
+	/**
+	 * set up each game, with a team1HBox, a submit button, 
+	 * and a team2HBox
+	 * 
+	 * @return VBox
+	 */
 	public VBox setUpGame() {
 		HBox team1HBox = setUpTeamHBox(team1);		
 		HBox team2HBox = setUpTeamHBox(team2);
 		VBox vBox = new VBox();
+	
 		Button submit = new Button();
 		submit.setText("Submit");
 		submit.setFont(new Font("Algerian", 11));
+		
 		vBox.getChildren().addAll(team1HBox, submit, team2HBox);
+		
 		return vBox;
 	}
 	
+	/**
+	 * set up an individual teamHBox
+	 * with a label specifying the team's ranking and name
+	 * and also a text field to type in the game's score
+	 * 
+	 * @param team
+	 * @return HBox
+	 */
 	private HBox setUpTeamHBox(Team team) {
 		Label teamProperty = new Label();
 		

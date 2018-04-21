@@ -9,6 +9,12 @@ package application;
 //Known Bugs: None, to the best of my knowledge
 ///////////////////////////////////////////////////////////////////////////////
 
+/**
+ * Team class contains information about the team's name,
+ * its specified ranking, and also the gameScore after
+ * a particular game
+ * 
+ */
 public class Team {
 	private String name;
 	private Integer rank;

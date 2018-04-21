@@ -29,9 +29,17 @@ import javafx.scene.layout.VBox;
 //Known Bugs: None, to the best of my knowledge
 ///////////////////////////////////////////////////////////////////////////////
 
+/**
+ * Main class loads the file into teams arraylist,
+ * precomputes the ranking of each team and place them
+ * at the appropriate position within the tournament bracket
+ * 
+ * @extends Application
+ *
+ */
 public class Main extends Application {
-	static final int HEIGHT = 1100;
-	static final int WIDTH = 700;
+	static final int WIDTH = 1200;
+	static final int HEIGHT = 700;
 
 	static ArrayList<Team> teams = new ArrayList<Team>();
 	static ArrayList<Game> games = new ArrayList<Game>();
@@ -43,6 +51,11 @@ public class Main extends Application {
 	static HBox center;
 	static BorderPane root;
 
+	/**
+	 * load the specified file within command line
+	 * if nothing is typed, load the default file
+	 * @param path
+	 */
 	private static void loadDefaultFile(String path) {
 		if (path == null) {
 			readFile("src" + File.separator + "teams.txt", null);
@@ -51,6 +64,15 @@ public class Main extends Application {
 		}
 	}
 
+	/**
+	 * read the file and load the teams and their corresponding ranking
+	 * into the teams arrayList
+	 * throw an alert box if the number of teams is illegal
+	 * 
+	 * @throws IOException
+	 * @param fileName
+	 * @param file
+	 */
 	static void readFile(String fileName, File file) {
 		try {
 			if (!(fileName == null))
@@ -79,6 +101,11 @@ public class Main extends Application {
 
 	}
 
+	/**
+	 * precompute the ranking so that the first seed will
+	 * compete with the last seed, and so on. Also the highest two seeds
+	 * should meet at the final game
+	 */
 	static void preComputationRanking() {
 		int[] left = new int[teams.size() / 2];
 		int[] right = new int[teams.size() / 2];
@@ -117,6 +144,12 @@ public class Main extends Application {
 		teams = ranking;
 	}
 	
+	/**
+	 * add all games and their corresponding gameIndex into the games
+	 * arraylist; for the first teams.size()/2 games, insert them with
+	 * the corresponding teams; for the later games, insert them with corresponding
+	 * gameIndex, but with not teams, since teams(winners) are not decided yet
+	 */
 	static void setGames() {
 		int gameIndex = 1;
 		for (int i = 0; i < teams.size() / 2; i++) {
@@ -165,7 +198,7 @@ public class Main extends Application {
 		try {
 			root = new BorderPane();
 			root = GUI.setupGUI(root);
-			Scene scene = new Scene(root, HEIGHT, WIDTH);
+			Scene scene = new Scene(root, WIDTH, HEIGHT);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			stage.setScene(scene);
 			stage.setTitle("Tournament Bracket");
