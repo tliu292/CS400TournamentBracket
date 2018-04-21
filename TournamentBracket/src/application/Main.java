@@ -38,8 +38,8 @@ import javafx.scene.layout.VBox;
  *
  */
 public class Main extends Application {
-	static final int HEIGHT = 1100;
-	static final int WIDTH = 700;
+	static final int WIDTH = 1100;
+	static final int HEIGHT = 700;
 
 	static ArrayList<Team> teams = new ArrayList<Team>();
 	static ArrayList<Game> games = new ArrayList<Game>();
@@ -58,7 +58,8 @@ public class Main extends Application {
 	 */
 	private static void loadDefaultFile(String path) {
 		if (path == null) {
-			readFile("src" + File.separator + "teams.txt", null);
+			readFile("teams.txt", null);
+			//readFile("src" + File.separator + "teams.txt", null);
 		} else {
 			readFile(path, null);
 		}
