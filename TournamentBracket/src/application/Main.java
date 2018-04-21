@@ -38,8 +38,16 @@ import javafx.scene.layout.VBox;
  *
  */
 public class Main extends Application {
+<<<<<<< HEAD
 	static final int WIDTH = 1200;
 	static final int HEIGHT = 700;
+||||||| merged common ancestors
+	static final int HEIGHT = 1100;
+	static final int WIDTH = 700;
+=======
+	static final int HEIGHT = 800;
+	static final int WIDTH = 600;
+>>>>>>> daniel
 
 	static ArrayList<Team> teams = new ArrayList<Team>();
 	static ArrayList<Game> games = new ArrayList<Game>();
