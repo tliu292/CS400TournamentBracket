@@ -41,7 +41,7 @@
  
 /* hbox in the center of borderpane contains several vboxes*/
 #root{
-	-fx-background-image: url("logo.png");
+	-fx-background-image: url("../../src/application/logo.png");
 	-fx-background-repeat:no-repeat;
     -fx-background-position:center;
 	-fx-max-width: 945; /*which is = 5*7*9*3 */
