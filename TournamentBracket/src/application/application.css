@@ -4,71 +4,133 @@
  * The stage is 1080 * 720
  */
  
-
+/*team list */
+#vbox-names{
+	-fx-alignment: center;
+}
  
  /*left vbox in the left of borderpane contains load and list of names*/
- .vbox-left{
+ #vbox-left{
  	-fx-max-width: 135;
  	-fx-alignment: top-center;
+ 	-fx-background-color: #dadfe1;
  }
  
  /*load button at top of left vbox*/
- .button-load{
+ #load-button{
  	-fx-max-width: 100;
  	-fx-max-height: 60;
  	-fx-padding: 0, 0, 0, 15;
+ 	-fx-text-fill: #c5050c;
+ 	-fx-font-family: 'Bowlby One SC', cursive;
+ 	-fx-background-color: #e2a1a1;
+ 	-fx-border-color: #9b0000;
+ 	-fx-border-radius: 3;
+ 	-fx-border-width: 1.5;
  }
  
  /* names loaded at left vbox*/
  .label-names{
- 	-fx-padding: 2.5, 2.5, 2.5, 2.5;
+ 	-fx-padding: 2.5, 0, 2.5, 0;
  	-fx-max-height: 45;
  	-fx-max-width: 120;
+ 	-fx-font-weight: bold;
+ 	-fx-font-family: 'Ubuntu', sans-serif;
+ 	-fx-font-size: 11;
  }
  
 /* hbox in the center of borderpane contains several vboxes*/
-.hbox-big{
-	-fx-background-color: #FFFFFF;
+#root{
+	-fx-background-image: url("logo.png");
+	-fx-background-repeat:no-repeat;
+    -fx-background-position:center;
 	-fx-max-width: 945; /*which is = 5*7*9*3 */
 }
+
+/*label head */
+#label-head{
+	-fx-padding:5, 0, 0, 0;
+	-fx-font-weight: bold;
+	-fx-font-family: 'Black Han Sans', sans-serif;
+	-fx-text-fill: #c5050c;
+}
+
+/*-fx-border-radius: 5; */
+
 
 /*vboxName.getStyleClass().add("vbox"); number of vBox = log2(NumberOfTeam)*2-1 */
 /*width of vbox = 945/??? */
 /*center hboxes in every vbox */
-.vbox-big{
+#vbox-big{
 	-fx-alignment: center;
+	-fx-background-color: transparent;
+}
+
+/*blank vbox */
+.vbox-blank{
+	-fx-pref-width: 100%;
+	-fx-pref-height: 12;
+}
+
+/*another blank vbox */
+.vbox-blank1{
+	-fx-max-height: 2;
+	-fx-pref-width: 100%;
+	-fx-background-color: transparent;
+	-fx-padding: -6, 0, -6, 0;
 }
 
 /* small vbox in large vbox*/
-.vbox-small{
-	-fx-max-height: 60;
-	-fx-padding: 7.5;
+.game{
+	-fx-max-height: 80;
+	-fx-padding: 7.5, 1.5, 7.5, 1.5;
 	-fx-border-style: solid;
 	-fx-alignment: center;
+	-fx-border-radius: 5;
+	-fx-background-color:rgba(218,223,225,0.75);
+	-fx-background-radius:5;
 }
 
 /*hbox for each team */
 .team{
-	-fx-alignment: center-right;
-	-fx-max-height: 18;
-	-fx-padding: 5, 0, 5, 0;
-}
-
-
- 
-/* set bg color*/
-.root {
-	-fx-background-color: #DFB951;
-}
-
-/*center vboxes in the center of borderpane */
-/*root.getCenter().getStyleClass().add("borderpane"); */
-.borderpane{
 	-fx-alignment: center;
-	-fx-background-color: #FFFFFF;
+	-fx-max-height: 18;
+}
+
+.team-only{
+	 -fx-font-weight: bold;
+ 	-fx-font-family: 'Ubuntu', sans-serif;
+ 	-fx-font-size: 36;
+	-fx-border-style: solid;
+	-fx-alignment: center;
+	-fx-border-radius: 5;
+	-fx-background-color:rgba(218,223,225,0.75);
+	-fx-background-radius:5;
+	-fx-pref-width: 180;
+	-fx-pref-height: 120;
 }
 
 .button-submit{
  	-fx-alignment: center;
  	-fx-max-height: 18;
+ 	-fx-padding: 0, 0, 0, 15;
+ 	-fx-text-fill: #c5050c;
+ 	-fx-font-family: 'Bowlby One SC', cursive;
+ 	-fx-background-color: #e2a1a1;
+ 	-fx-border-color: #9b0000;
+ 	-fx-border-radius: 3;
+ 	-fx-border-width: 1.5;
+ 	
+}
+
+.button-hover{
+	-fx-alignment: center;
+ 	-fx-max-height: 18;
+ 	-fx-padding: 0, 0, 0, 15;
+ 	-fx-text-fill: #f7f7f7;
+ 	-fx-font-family: 'Bowlby One SC', cursive;
+ 	-fx-background-color: #e2a1a1;
+ 	-fx-border-color: #9b0000;
+ 	-fx-border-radius: 3;
+ 	-fx-border-width: 1.5;
 }
