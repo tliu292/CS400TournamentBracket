@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Created-By: D-Team 99 / A-Team 100: Jiazhi Yang ( jyang436@wisc.edu ), Junqi Kou ( jkou3@wisc.edu ), Kesong Cao ( kcao22@wisc.edu ), Chentao Wang ( cwang556@wisc.edu ), Tz-Ruei Liu ( tliu292@wisc.edu )
+Main-Class: application.Main
