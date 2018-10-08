@@ -7,11 +7,11 @@ Good luck to your internship seeking process!
 
 Team members (alphabetical order):
 
-Kesong (Steven) Cao
-Junqi (Jerry) Kou
-Tz-Ruei (Ray) Liu
-Chentao (Kyle) Wang
-Jiazhi (Daniel) Yang
+* Kesong (Steven) Cao
+* Junqi (Jerry) Kou
+* Tz-Ruei (Ray) Liu
+* Chentao (Kyle) Wang
+* Jiazhi (Daniel) Yang
 
 Please contact us if this violates any academic terms.
 
