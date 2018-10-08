@@ -1,5 +1,22 @@
 # TournamentBracket
 
+## Notes:
+
+Once a private repository, CS400TournamentBracket is now made public for our great team members!
+Good luck to your internship seeking process!
+
+Team members (alphabetical order):
+
+Kesong (Steven) Cao
+Junqi (Jerry) Kou
+Tz-Ruei (Ray) Liu
+Chentao (Kyle) Wang
+Jiazhi (Daniel) Yang
+
+Please contact us if this violates any academic terms.
+
+## Challenge Description from the Spring 2018 course website: https://pages.cs.wisc.edu/~deppeler/cs400/
+
 Design and then implement a Java FX GUI program that allows user to upload a list of challengers, display a tournament bracket graphical user interface (GUI), and then allows the user to interact with the GUI to update the bracket until the winner of the tournament is determined.
 
 The challengers are provided in a text only file in order of their ranking from first to last place after some type of pre-tournament ranking.
