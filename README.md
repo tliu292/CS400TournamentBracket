@@ -3,7 +3,7 @@
 ## Notes:
 
 Once a private repository, CS400TournamentBracket is now made public for our great team members!
-Good luck to your internship seeking process!
+Good luck to your internship-seeking journey!
 
 Team members (alphabetical order):
 
