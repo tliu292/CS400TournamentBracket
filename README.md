@@ -1,4 +1,4 @@
-# TournamentBracket
+# Tournament Bracket
 
 ## Notes:
 
